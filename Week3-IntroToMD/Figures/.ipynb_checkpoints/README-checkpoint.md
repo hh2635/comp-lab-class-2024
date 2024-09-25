@@ -1,0 +1,1 @@
+This folder stores the visualization result by VMD and Python. 
