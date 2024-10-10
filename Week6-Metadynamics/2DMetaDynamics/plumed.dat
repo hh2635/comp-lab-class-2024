@@ -1,0 +1,23 @@
+# vim:ft=plumed
+MOLINFO STRUCTURE=diala.pdb 
+
+# Compute the backbone dihedral angle phi (C-N-CA-C) and psi (N-CA-C-N)
+phi: TORSION ATOMS=5,7,9,15
+psi: TORSION ATOMS=7,9,15,17
+
+# Activate well-tempered metadynamics in both phi and psi
+metad: METAD ...
+   ARG=phi,psi
+   SIGMA=0.35,0.35  # Gaussian widths for phi and psi
+   HEIGHT=1.2       # Gaussian height in kJ/mol
+   PACE=500         # Add a Gaussian every 500 steps
+   BIASFACTOR=10    # Bias factor for well-tempered metadynamics
+   FILE=HILLS       # Output file for hills
+   GRID_MIN=-pi,-pi # Minimum values for the grid
+   GRID_MAX=pi,pi   # Maximum values for the grid
+   GRID_WFILE=fes_grid.dat  # Output grid file
+   GRID_WSTRIDE=10000  # Write the grid file every 10000 steps
+...
+
+# Print both collective variables and the value of the bias potential on the COLVAR file
+PRINT ARG=phi,psi,metad.bias FILE=COLVAR STRIDE=10
