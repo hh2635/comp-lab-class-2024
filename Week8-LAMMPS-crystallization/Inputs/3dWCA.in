@@ -1,9 +1,8 @@
-# 3d WCA system, random initial configuration
-
+#2d WCA system, random initial configuration
 #variable density equal 0.5
 variable initial_temperature equal 3.0
 variable final_temperature equal 0.1
-variable dt equal 0.002
+variable dt equal 0.01
 variable tau equal 100*${dt}
 variable thermo_time equal 50000*${dt}
 variable equil_steps equal 50000
