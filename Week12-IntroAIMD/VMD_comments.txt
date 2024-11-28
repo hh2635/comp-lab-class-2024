@@ -1,0 +1,4 @@
+To locate the extra proton, and view the proton hopping. There are several setting to the VMD that I have made. 
+1. For the frist rep, set the Style as DynamicBonds, Color as Type, and Selection all. The Coloring Method is Type, Drawing Method is DynamicBonds, with Bond Radius 0.2, Distance Cutoff 1.5. 
+2. For the second rep, set the Style as VMD, Color as Name, and Selection all. The Coloring Method is Name, Drawing Method is VMD, Sphere Scale is 12. 
+3. For the third rep, set the Style as VMD, Color as ColorID4, and Selection index 87 (extra proton). The Coloring Method is ColorID 4, and Drawing Method is VMD. 
