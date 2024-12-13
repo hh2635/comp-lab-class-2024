@@ -1,0 +1,24 @@
+# Load trajectory
+mol new ../Outputs/metad1_initmonitor/complex_LJ_mod.prmtop type parm7
+mol addfile ../Outputs/metad1_initmonitor/METADYN-combined.xyz.gz type xyz waitfor all
+
+# Representation for protein
+mol representation NewCartoon
+mol selection protein
+mol addrep top
+
+# Representation for ligand (Dynamic Bonds)
+mol representation DynamicBonds
+mol selection {not protein and within 5 of protein}
+mol addrep top
+
+# "Before" Reaction Frame
+animate goto 0
+render TachyonInternal -format png ../Figures/before_reaction.png
+
+# "After" Reaction Frame
+animate goto end
+render TachyonInternal -format png ../Figures/after_reaction.png
+
+# Create a movie of the entire trajectory
+render movie tachyon ../Figures/reaction_movie.mpg
